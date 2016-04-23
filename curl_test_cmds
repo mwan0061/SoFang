@@ -1,4 +1,6 @@
 curl http://localhost:3000/api/user/list
 curl -H "Content-Type: application/json" -X POST -d '{"name":"TEST", "age":10}' http://localhost:3000/api/user/create
-curl -H "Content-Type: application/json" -X POST -d '{"name":"TEST", "age":8}'  http://localhost:3000/api/user/update/571b563db35861c81dfee86b
+curl -H "Content-Type: application/json" -X POST -d '{"name":"TEST", "age":8}'  http://localhost:3000/api/user/update/571b7a68ff679e1c2094751b
+curl -H "Content-Type: application/json" -X POST -d '{"name":"TEST", "age":8, "gender":"male"}'  http://localhost:3000/api/user/update/571b7a68ff679e1c2094751b
+curl -H "Content-Type: application/json" -X POST -d '{"name":"TEST1", "gender":"female"}' http://localhost:3000/api/user/create
 curl http://localhost:3000/api/user/delete/571b563db35861c81dfee86b
