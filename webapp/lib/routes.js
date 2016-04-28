@@ -1,7 +1,7 @@
 var
   configRoutes,
   crud   = require( './crud'  ),
-  makeId = crud.makeMongoId,
+  makeId = crud.makeMongoId
 ;
 
 configRoutes = function ( app, server ) {
@@ -18,7 +18,7 @@ configRoutes = function ( app, server ) {
     crud.read(
       request.params.obj_type,
       {}, {},
-      function ( map_list ) { response.send( map_list ); };
+      function ( map_list ) { response.send( map_list ); }
     );
   });
 
