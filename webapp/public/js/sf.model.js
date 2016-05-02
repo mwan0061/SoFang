@@ -5,14 +5,14 @@ sf.model = (function () {
 	},
 
 	stateMap = {
-	  property_pid_map    : {},
+	  property_id_map    : {},
 	  property_db         : TAFFY(),
 	  update_limit_max    : 3,
-	  top_property_pid    : null,
-	  bottom_property_pid : null
+	  top_property__id    : null,
+	  bottom_property__id : null
 	},
 
-	isFakeData = true,
+	isFakeData = false,
 
 	propertyProto, makeProperty, makePropertyList,
 	initModule, property
@@ -23,32 +23,32 @@ sf.model = (function () {
   makeProperty = function ( property_map ) {
     var
       property,
-      pid         = property_map.pid,
-	    suburb      = property_map.suburb,
-	    city        = property_map.city,
-	    address     = property_map.address,
+      _id         = property_map._id,
+	  suburb      = property_map.suburb,
+	  city        = property_map.city,
+	  address     = property_map.address,
       description = property_map.description,
-	    rent        = property_map.rent,
-	    start_date  = property_map.start_date
+	  rent        = property_map.rent,
+	  start_date  = property_map.start_date
     ;
 
-	  if ( pid === undefined || suburb === undefined || start_date === undefined) {
-        throw 'Property id, suburb and start date are required.';
-	  }
+	if ( _id === undefined || suburb === undefined || start_date === undefined) {
+      throw 'Property id, suburb and start date are required.';
+	}
 
-	  property             = Object.create( propertyProto );
-	  property.pid         = pid;
-	  property.suburb      = suburb;
+	property             = Object.create( propertyProto );
+	property._id         = _id;
+	property.suburb      = suburb;
   	property.city        = city;
   	property.address     = address;
     property.description = description;
   	property.rent        = rent;
   	property.start_date  = start_date;
 
-	  stateMap.property_pid_map[ pid ] = property;
+	stateMap.property_id_map[ _id ] = property;
   	stateMap.property_db.insert( property );
 
-	  return property;
+    return property;
   };
 
   makePropertyList = function ( data_list ) {
@@ -61,7 +61,7 @@ sf.model = (function () {
       property_map = data_list[ i ];
 
       make_property_map = {
-        pid         : property_map.pid,
+        _id         : property_map._id,
         suburb      : property_map.suburb,
         city        : property_map.city,
         address     : property_map.address,
@@ -78,21 +78,21 @@ sf.model = (function () {
 
   property = (function () {
     var
-	    sio = isFakeData ? sf.fake.mockSio : sf.data.makeSio(),
-	    get_new_property_list, get_next_property_list,
+	  sio = isFakeData ? sf.fake.mockSio : sf.data.getSio(),
+	  get_new_property_list, get_next_property_list,
       _publish_new_property_list_change, _publish_next_property_list_change
-	  ;
+	;
 
     get_new_property_list = function () {
       if ( sio ) {
-  	    sio.on(   'getnewpropertylist',  _publish_new_property_list_change );
+  	    sio.on(   'updatenewpropertylist',  _publish_new_property_list_change );
         sio.emit( 'getnewpropertylist' );
   	  }
     };
 
     get_next_property_list = function () {
       if ( sio ) {
-  	    sio.on(   'getnextpropertylist',  _publish_next_property_list_change );
+  	    sio.on(   'updatenextpropertylist',  _publish_next_property_list_change );
         sio.emit( 'getnextpropertylist' );
   	  }
     };
@@ -100,16 +100,16 @@ sf.model = (function () {
     _publish_new_property_list_change = function ( arg_map ) {
       var property_list;
 
-      property_list = makePropertyList ( arg_map.property_list );
-	    stateMap.top_property_pid = property_list[ 0 ].pid;
+      property_list = makePropertyList ( arg_map[0] );
+	    stateMap.top_property__id = property_list[ 0 ]._id;
       $.gevent.publish( 'sf-new-property-list-changed',  { property_list : property_list } );
     };
 
     _publish_next_property_list_change = function ( arg_map ) {
       var property_list;
 
-      property_list = makePropertyList ( arg_map.property_list );
-	    stateMap.bottom_property_pid = property_list[ property_list.length - 1 ].pid;
+      property_list = makePropertyList ( arg_map[0] );
+	    stateMap.bottom_property__id = property_list[ property_list.length - 1 ]._id;
       $.gevent.publish( 'sf-next-property-list-changed', { property_list : property_list } );
     };
 

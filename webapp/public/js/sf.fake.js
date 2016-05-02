@@ -2,7 +2,7 @@ sf.fake = (function () {
   'use strict';
   var
     new_property_list = [
-	    { pid         : 'new01',
+	    { _id         : 'new01',
 	      suburb      : 'Burwood',
 		    city        : 'Sydney',
 	      address     : '1 Burwood Street',
@@ -10,7 +10,7 @@ sf.fake = (function () {
 	      rent        : '250',
 	      start_date  : '01/08/2016'
       },
-	    { pid         : 'new02',
+	    { _id         : 'new02',
 	      suburb      : 'Belmore',
 		    city        : 'Sydney',
 	      address     : '1 Belmore Street',
@@ -18,7 +18,7 @@ sf.fake = (function () {
 	      rent        : '200',
 	      start_date  : '01/05/2016'
       },
-	    { pid         : 'new03',
+	    { _id         : 'new03',
 	      suburb      : 'Box Hill',
 		    city        : 'Melbourne',
 	      address     : '1 Box Street',
@@ -29,7 +29,7 @@ sf.fake = (function () {
 	  ],
 
 	  next_property_list = [
-	    { pid         : 'next01',
+	    { _id         : 'next01',
 	      suburb      : 'Strathfield',
 	  	  city        : 'Sydney',
 	      address     : '1 Strathfield Street',
@@ -37,7 +37,7 @@ sf.fake = (function () {
 	      rent        : '550',
 	      start_date  : '01/07/2016'
       },
-	    { pid         : 'next02',
+	    { _id         : 'next02',
 	      suburb      : 'Lakemba',
 		    city        : 'Sydney',
 	      address     : '1 Lakemba Street',
@@ -45,7 +45,7 @@ sf.fake = (function () {
 	      rent        : '100',
 	      start_date  : '01/06/2016'
       },
-	    { pid         : 'next03',
+	    { _id         : 'next03',
 	      suburb      : 'Dockland',
 		    city        : 'Melbourne',
 	      address     : '1 Dockland Street',

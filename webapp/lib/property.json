@@ -1,0 +1,41 @@
+{
+  "type" : "object",
+  "additionalProperties" : false,
+  "properties" : {
+    "_id" : {
+      "type" : "string",
+      "minLength" : 25,
+      "maxLength" : 25
+    },
+    "suburb" : {
+      "type" : "string",
+      "minLength" : 2,
+      "maxLength" : 50,
+      "required" : true
+    },
+    "city" : {
+      "type" : "string",
+      "minLength" : 2,
+      "maxLength" : 50,
+      "required" : true
+    },
+    "address" : {
+      "type" : "string",
+      "minLength" : 2,
+      "maxLength" : 255,
+      "required" : true
+    },
+    "description" : {
+      "type" : "string",
+      "minLength" : 2,
+      "maxLength" : 1023,
+      "required" : true
+    },
+    "rent" : {
+      "type" : "integer"
+    },
+    "start_date" : {
+      "type" : "date"
+    }
+  }
+}

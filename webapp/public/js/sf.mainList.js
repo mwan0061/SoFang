@@ -6,7 +6,7 @@ sf.mainList = (function () {
       main_html : String()
 		  + '<div class="sf-mainList">'
 		  + '  <div class="sf-mainList-newListBtn">refresh</div>'
-      + '  <div class="sf-mainList-listTable"></div>'
+          + '  <div class="sf-mainList-listTable"></div>'
 		  + '  <div class="sf-mainList-nextListBtn">more</div>'
 		  + '</div>',
 
@@ -62,7 +62,7 @@ sf.mainList = (function () {
     property_list.forEach( function( property ) {
       list_html += (
           '<div>'
-        +   property.pid
+        +   property._id
         + '</div>'
       );
     });

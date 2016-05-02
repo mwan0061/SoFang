@@ -12,10 +12,13 @@ var
   mongoDbUrl  = 'mongodb://localhost:27017/sf',
   dbHandle,
   validator   = JSV.createEnvironment(),
-  objTypeMap  = { 'user' : {} }
+  objTypeMap  = { 
+    'user'     : {},
+	'property' : {}
+  }
 ;
 
-loadSchema = function ( schema_name, schema_path ) {
+loadSchema = function ( schema_name, schema_path) {
   fsHandle.readFile( schema_path, 'utf8', function ( err, data ) {
     objTypeMap[ schema_name ] = JSON.parse( data );
   });
@@ -41,7 +44,7 @@ checkType = function ( obj_type ) {
 constructObj = function ( obj_type, obj_map, call_back ) {
   var type_check_map = checkType ( obj_type );
   if ( type_check_map ) {
-    call_back( type_check_map );
+    callback( type_check_map );
     return;
   }
 
@@ -64,7 +67,7 @@ constructObj = function ( obj_type, obj_map, call_back ) {
         );
       }
       else {
-        call_back({
+        callback({
           error_msg  : 'INput document not valid',
           error_list : error_list
         });
@@ -76,7 +79,7 @@ constructObj = function ( obj_type, obj_map, call_back ) {
 readObj = function ( obj_type, find_map, fields_map, call_back ) {
   var type_check_map = checkType( obj_type );
   if ( type_check_map ) {
-    call_back( type_check_map );
+    callback( type_check_map );
     return;
   }
 
@@ -95,7 +98,7 @@ readObj = function ( obj_type, find_map, fields_map, call_back ) {
 updateObj = function ( obj_type, find_map, set_map, call_back ) {
   var type_check_map = checkType( obj_type );
   if ( type_check_map ) {
-    call_back ( type_check_map );
+    callback ( type_check_map );
     return;
   }
 
@@ -118,7 +121,7 @@ updateObj = function ( obj_type, find_map, set_map, call_back ) {
         );
       }
       else {
-        call_back({
+        callback({
           error_msg  : 'INput document not valid',
           error_list : error_list
         });
@@ -130,7 +133,7 @@ updateObj = function ( obj_type, find_map, set_map, call_back ) {
 destroyObj = function ( obj_type, find_map, call_back ) {
   var type_check_map = checkType( obj_type );
   if ( type_check_map ) {
-    call_back( type_check_map );
+    callback( type_check_map );
     return;
   }
 

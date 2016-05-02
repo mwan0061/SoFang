@@ -1,6 +1,8 @@
 var
   configRoutes,
-  crud   = require( './crud'  ),
+  crud   = require( './crud' ),
+  //chat   = require( './chat' ),
+  property = require( './property' ),
   makeId = crud.makeMongoId
 ;
 
@@ -55,6 +57,9 @@ configRoutes = function ( app, server ) {
       function ( result_map ) { response.send( result_map ); }
     );
   });
+  
+  //chat.connect( server );
+  property.connect( server );
 };
 
 module.exports = { configRoutes : configRoutes };

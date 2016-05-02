@@ -1,6 +1,52 @@
+Linux:
 curl http://localhost:3000/api/user/list
 curl -H "Content-Type: application/json" -X POST -d '{"name":"TEST", "age":10}' http://localhost:3000/api/user/create
 curl -H "Content-Type: application/json" -X POST -d '{"name":"TEST", "age":8}'  http://localhost:3000/api/user/update/571b7a68ff679e1c2094751b
-curl -H "Content-Type: application/json" -X POST -d '{"name":"TEST", "age":8, "gender":"male"}'  http://localhost:3000/api/user/update/571b7a68ff679e1c2094751b
+curl -H "Content-Type: application/json" -X POST -d '{"name":"TEST", "age":8}', "gender":"male"}'  http://localhost:3000/api/user/update/571b7a68ff679e1c2094751b
 curl -H "Content-Type: application/json" -X POST -d '{"name":"TEST1", "gender":"female"}' http://localhost:3000/api/user/create
 curl http://localhost:3000/api/user/delete/571b563db35861c81dfee86b
+
+
+Windows:
+curl http://localhost:3000/api/user/list
+curl -H "Content-Type: application/json" -X POST -d "{\"name\":\"TEST\", \"age\":10}" http://localhost:3000/api/user/create
+curl -H "Content-Type: application/json" -X POST -d "{\"name\":\"TEST\", \"age\":8}"  http://localhost:3000/api/user/update/571b7a68ff679e1c2094751b
+curl -H "Content-Type: application/json" -X POST -d "{\"name\":\"TEST\", \"age\":8}, \"gender\":\"male\"}"  http://localhost:3000/api/user/update/571b7a68ff679e1c2094751b
+curl -H "Content-Type: application/json" -X POST -d "{\"name\":\"TEST1\", \"gender\":\"female\"}" http://localhost:3000/api/user/create
+curl http://localhost:3000/api/user/delete/571b563db35861c81dfee86b
+
+
+{suburb: 'Burwood', city: 'Sydney', address: '1 Burwood Street', description: 'New apartment.', rent: 250, start_date: '01/08/2016'}
+{suburb: 'Belmore', city: 'Sydney', address: '1 Belmore Street', description: 'New House.', rent: '200', start_date: '01/05/2016'}
+{ _id         : 'new03',
+	      suburb      : 'Box Hill',
+		    city        : 'Melbourne',
+	      address     : '1 Box Street',
+        description : 'Big apartment.',
+	      rent        : '150',
+	      start_date  : '01/04/2016'
+      },
+	  { _id         : 'next01',
+	      suburb      : 'Strathfield',
+	  	  city        : 'Sydney',
+	      address     : '1 Strathfield Street',
+        description : 'New apartment.',
+	      rent        : '550',
+	      start_date  : '01/07/2016'
+      },
+	    { _id         : 'next02',
+	      suburb      : 'Lakemba',
+		    city        : 'Sydney',
+	      address     : '1 Lakemba Street',
+        description : 'Old House.',
+	      rent        : '100',
+	      start_date  : '01/06/2016'
+      },
+	    { _id         : 'next03',
+	      suburb      : 'Dockland',
+		    city        : 'Melbourne',
+	      address     : '1 Dockland Street',
+        description : 'New apartment.',
+	      rent        : '350',
+	      start_date  : '01/09/2016'
+      },
